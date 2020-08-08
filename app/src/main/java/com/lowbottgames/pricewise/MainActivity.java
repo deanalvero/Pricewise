@@ -1,19 +1,19 @@
 package com.lowbottgames.pricewise;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.lowbottgames.pricewise.adapter.ItemRecyclerAdapter;
 import com.lowbottgames.pricewise.manager.PItemManager;
 import com.lowbottgames.pricewise.model.PItem;
-import com.lowbottgames.pricewise.util.Constant;
 import com.lowbottgames.pricewise.util.DialogHelper;
 import com.lowbottgames.pricewise.util.Utility;
 

@@ -7,9 +7,6 @@ import android.net.Uri;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
-/**
- * Created by Dean on 12/14/2015.
- */
 public class Utility {
 
     public static void hideKeyboard(Activity activity){

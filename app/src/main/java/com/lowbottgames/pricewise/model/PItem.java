@@ -1,8 +1,5 @@
 package com.lowbottgames.pricewise.model;
 
-/**
- * Created by Dean on 12/13/2015.
- */
 public class PItem {
     private double price;
     private double unit;

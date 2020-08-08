@@ -2,11 +2,9 @@ package com.lowbottgames.pricewise.util;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 
-/**
- * Created by Dean on 12/15/2015.
- */
+import androidx.appcompat.app.AlertDialog;
+
 public class DialogHelper {
 
     public static AlertDialog showErrorDialog(Context context, CharSequence message){
@@ -16,7 +14,6 @@ public class DialogHelper {
             }
         });
         builder.setMessage(message);
-        AlertDialog dialog = builder.create();
-        return dialog;
+        return builder.create();
     }
 }

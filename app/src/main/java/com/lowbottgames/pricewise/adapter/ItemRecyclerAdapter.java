@@ -1,19 +1,17 @@
 package com.lowbottgames.pricewise.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lowbottgames.pricewise.R;
 import com.lowbottgames.pricewise.model.PItem;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dean on 12/13/2015.
- */
 public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ViewHolder>{
 
     private static OnItemClickListener listener;

@@ -4,9 +4,6 @@ import com.lowbottgames.pricewise.model.PItem;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dean on 12/14/2015.
- */
 public class PItemManager {
 
     private static PItemManager INSTANCE;
