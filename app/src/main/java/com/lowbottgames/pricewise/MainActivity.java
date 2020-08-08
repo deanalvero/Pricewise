@@ -13,10 +13,9 @@ import android.widget.EditText;
 import com.lowbottgames.pricewise.adapter.ItemRecyclerAdapter;
 import com.lowbottgames.pricewise.manager.PItemManager;
 import com.lowbottgames.pricewise.model.PItem;
+import com.lowbottgames.pricewise.util.Constant;
 import com.lowbottgames.pricewise.util.DialogHelper;
 import com.lowbottgames.pricewise.util.Utility;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextPrice = (EditText) findViewById(R.id.editText_price);
         editTextUnit = (EditText) findViewById(R.id.editText_unit);
+
     }
 
     private void clickedDone() {

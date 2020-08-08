@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ViewHolder>{
 
+    private static OnItemClickListener listener;
     private ArrayList<PItem> itemList;
 
     public ItemRecyclerAdapter(ArrayList<PItem> itemList){
@@ -44,7 +45,16 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
         return itemList.size();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView textViewEquation, textViewAnswer;
 
         public ViewHolder(final View itemView) {
@@ -52,6 +62,14 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
 
             textViewEquation = (TextView) itemView.findViewById(R.id.textView_equation);
             textViewAnswer = (TextView) itemView.findViewById(R.id.textView_answer);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null)
+                        listener.onItemClick(itemView, getLayoutPosition());
+                }
+            });
         }
     }
 }
