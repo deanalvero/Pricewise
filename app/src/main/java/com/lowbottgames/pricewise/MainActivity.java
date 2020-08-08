@@ -19,9 +19,9 @@ import com.lowbottgames.pricewise.util.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editTextPrice, editTextUnit;
-    RecyclerView recyclerView;
-    ItemRecyclerAdapter adapter;
+    private EditText editTextPrice, editTextUnit;
+    private RecyclerView recyclerView;
+    private ItemRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
         editTextPrice = (EditText) findViewById(R.id.editText_price);
         editTextUnit = (EditText) findViewById(R.id.editText_unit);
-
     }
 
     private void clickedDone() {

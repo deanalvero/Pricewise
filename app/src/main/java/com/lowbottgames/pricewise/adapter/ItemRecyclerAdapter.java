@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.ViewHolder>{
 
-    private static OnItemClickListener listener;
+    private ItemRecyclerAdapter.OnItemClickListener listener;
     private ArrayList<PItem> itemList;
 
     public ItemRecyclerAdapter(ArrayList<PItem> itemList){
@@ -23,18 +23,24 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_pitem, parent, false);
-
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_pitem, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        PItem item = itemList.get((itemList.size() - 1) - position);
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        PItem item = itemList.get(position);
 
         holder.textViewEquation.setText(String.format("%f / %f", item.getPrice(), item.getUnit()));
         holder.textViewAnswer.setText(String.format("%f", item.getRatio()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -44,7 +50,7 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View itemView, int position);
+        void onItemClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -60,14 +66,6 @@ public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapte
 
             textViewEquation = (TextView) itemView.findViewById(R.id.textView_equation);
             textViewAnswer = (TextView) itemView.findViewById(R.id.textView_answer);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null)
-                        listener.onItemClick(itemView, getLayoutPosition());
-                }
-            });
         }
     }
 }
