@@ -2,11 +2,14 @@
     <string name="app_name">Pricewise</string>
 
     <string name="action_rate">Rate</string>
+    <string name="content_description_rate">Rate</string>
 
     <string name="action_clear_all">Clear All</string>
+    <string name="content_description_clear_all">Clear All</string>
 
     <string name="text_price">Price</string>
     <string name="text_unit">Unit</string>
+
 
 
     <string name="error_price">Please enter a price.</string>

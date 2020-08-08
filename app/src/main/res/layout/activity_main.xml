@@ -1,92 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_marginBottom="128dp"
+        android:clipToPadding="false"
+        android:focusable="true" />
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_anchor="@+id/bottomAppBar">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|snap"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-            <LinearLayout
+            android:layout_weight="3"
+            android:textColorHint="@color/colorAccent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="4dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="24dp">
+                android:hint="@string/text_price"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textColorHint="@color/colorPrimaryLight"
-                    app:hintTextAppearance="@style/TextAppearance.AppCompat">
-                    <EditText
-                        android:id="@+id/editText_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/text_price"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"/>
-                </com.google.android.material.textfield.TextInputLayout>
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="0dp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textColorHint="@color/colorPrimaryLight"
-                    app:hintTextAppearance="@style/TextAppearance.AppCompat">
-                    <EditText
-                        android:id="@+id/editText_unit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/text_unit"
-                        android:imeOptions="actionDone"
-                        android:inputType="numberDecimal"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:focusable="true"
-            android:paddingTop="32dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_done_white_24dp"
-            app:borderWidth="0dp"
-            app:fabSize="normal"
-            app:layout_anchor="@+id/appBarLayout"
-            app:layout_anchorGravity="bottom|right|end" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</RelativeLayout>
+            android:layout_weight="2"
+            android:textColorHint="@color/colorAccent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_unit"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="end"
+        app:menu="@menu/menu_main">
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_done_white_24dp"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/bottomAppBar" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

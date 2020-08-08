@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.lowbottgames.pricewise.adapter.ItemRecyclerAdapter;
 import com.lowbottgames.pricewise.manager.PItemManager;
 import com.lowbottgames.pricewise.model.PItem;
@@ -27,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
 
         editTextPrice = (EditText) findViewById(R.id.editText_price);
         editTextUnit = (EditText) findViewById(R.id.editText_unit);
+
+        BottomAppBar bottomAppBar = findViewById(R.id.bottomAppBar);
+        bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_clear_all:
+                        PItemManager.getInstance().clear();
+                        if (adapter != null) adapter.notifyDataSetChanged();
+                        clearEditText();
+                        if (editTextPrice != null) editTextPrice.requestFocus();
+                        return true;
+
+                    case R.id.action_rate:
+                        Utility.rateApp(MainActivity.this);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void clickedDone() {
@@ -89,26 +108,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_clear_all:
-                PItemManager.getInstance().clear();
-                if (adapter != null) adapter.notifyDataSetChanged();
-                clearEditText();
-                if (editTextPrice != null) editTextPrice.requestFocus();
-                return true;
-
-            case R.id.action_rate:
-                Utility.rateApp(MainActivity.this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
